@@ -30,10 +30,7 @@ public class CrapsGame
 		Scanner in = new Scanner(System.in);
 		
 		// create roll variables and playAgain
-		int roll1 = die1.roll();
-		int roll2 = die2.roll();
-		int roll = roll1 + roll2;
-		int rollCount = 0;
+		int rollCount = 0; // counts roll to roll point, so initial roll isn't counted
 		int point;
 		boolean playAgain = true;
 		
@@ -44,18 +41,22 @@ public class CrapsGame
 			System.out.print("Press enter to roll\n");
 			in.nextLine();
 			
+			int roll1 = die1.roll(); // each roll is passed separately because each die is displayed
+			int roll2 = die2.roll();
+			int roll = roll1 + roll2;
+			
 			displayRoll(roll1, roll2);
 			
 			// win
 			if(roll == 7 || roll == 11)
 			{
-				System.out.println("You rolled a 7 or 11, you win!");
+				System.out.println("You rolled a 7 or 11, you win!\n");
 			}
 			
 			// lose
 			else if(roll == 2 || roll == 12)
 			{
-				System.out.println("You rolled a 2 or 12, you lose!");
+				System.out.println("You rolled a 2 or 12, you lose!\n");
 			}
 			
 			else
@@ -74,11 +75,11 @@ public class CrapsGame
 					roll2 = die2.roll();
 					roll = roll1 + roll2;
 					
-					displayRoll(die1.roll(), die2.roll());
+					displayRoll(roll1, roll2);
 					rollCount++;
 				}
 				
-				System.out.printf("You rolled your point after %d rolls, you win!", rollCount);
+				System.out.printf("You rolled your point after %d rolls, you win!\n", rollCount);
 			}
 			
 			System.out.print("Would you like to play again? (yes, no): ");
@@ -168,8 +169,7 @@ public class CrapsGame
 			System.out.println(" ----------");
 		}
 		
-		int roll = roll1 + roll2;
-		System.out.printf("You rolled %d\n", roll);
+		System.out.printf("You rolled %d\n", roll1 + roll2);
 	}
 
 }
