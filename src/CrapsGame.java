@@ -1,7 +1,8 @@
 /**
  * 
  * @author jeremy
- *
+ * Period 6
+ * AP Comp Sci
  */
 
 import java.util.Scanner;
@@ -29,7 +30,9 @@ public class CrapsGame
 		Scanner in = new Scanner(System.in);
 		
 		// create roll variables and playAgain
-		int roll = die1.roll() + die2.roll();
+		int roll1 = die1.roll();
+		int roll2 = die2.roll();
+		int roll = roll1 + roll2;
 		int rollCount = 0;
 		int point;
 		boolean playAgain = true;
@@ -41,7 +44,7 @@ public class CrapsGame
 			System.out.print("Press enter to roll\n");
 			in.nextLine();
 			
-			displayRoll(roll);
+			displayRoll(roll1, roll2);
 			
 			// win
 			if(roll == 7 || roll == 11)
@@ -67,9 +70,11 @@ public class CrapsGame
 					System.out.println("Press enter to roll again\n");
 					in.nextLine();
 					
-					roll = die1.roll() + die2.roll();
+					roll1 = die1.roll();
+					roll2 = die2.roll();
+					roll = roll1 + roll2;
 					
-					displayRoll(roll);
+					displayRoll(die1.roll(), die2.roll());
 					rollCount++;
 				}
 				
@@ -79,6 +84,12 @@ public class CrapsGame
 			System.out.print("Would you like to play again? (yes, no): ");
 			String usrPlayAgain = in.nextLine();
 			
+			while(!usrPlayAgain.equals("yes") && !usrPlayAgain.equals("no"))
+			{
+				System.out.print("\nInvalid input, enter 'yes' or 'no': ");
+				usrPlayAgain = in.nextLine();
+			}
+			
 			if(usrPlayAgain.equals("yes"))
 				playAgain = true;
 			
@@ -87,9 +98,77 @@ public class CrapsGame
 		}
 	}
 	
-	// displays the roll in format "You rolled a(n) roll"
-	public static void displayRoll(int roll)
+	public static void displayRoll(int roll1, int roll2)
 	{
+		
+		
+		if(roll1 == 1 || roll2 == 1)
+		{
+			System.out.println(" -----------");
+			System.out.println("|           |");
+			System.out.println("|           |");
+			System.out.println("|     *     |");
+			System.out.println("|           |");
+			System.out.println("|           |");
+			System.out.println(" ----------");
+		}
+		
+		if(roll1 == 2 || roll2 == 2)
+		{
+			System.out.println(" -----------");
+			System.out.println("|           |");
+			System.out.println("|  *        |");
+			System.out.println("|           |");
+			System.out.println("|        *  |");
+			System.out.println("|           |");
+			System.out.println(" ----------");
+		}
+		
+		if(roll1 == 3 || roll2 == 3)
+		{
+			System.out.println(" -----------");
+			System.out.println("|           |");
+			System.out.println("|  *        |");
+			System.out.println("|     *     |");
+			System.out.println("|        *  |");
+			System.out.println("|           |");
+			System.out.println(" ----------");
+		}
+
+		if(roll1 == 4 || roll2 == 4)
+		{
+			System.out.println(" -----------");
+			System.out.println("|           |");
+			System.out.println("|  *     *  |");
+			System.out.println("|           |");
+			System.out.println("|  *     *  |");
+			System.out.println("|           |");
+			System.out.println(" ----------");
+		}
+		
+		if(roll1 == 5 || roll2 == 5)
+		{
+			System.out.println(" -----------");
+			System.out.println("|           |");
+			System.out.println("|  *     *  |");
+			System.out.println("|     *     |");
+			System.out.println("|  *     *  |");
+			System.out.println("|           |");
+			System.out.println(" ----------");
+		}
+		
+		if(roll1 == 6 || roll2 == 6)
+		{
+			System.out.println(" -----------");
+			System.out.println("|           |");
+			System.out.println("|  *  *  *  |");
+			System.out.println("|  *  *  *  |");
+			System.out.println("|  *  *  *  |");
+			System.out.println("|           |");
+			System.out.println(" ----------");
+		}
+		
+		int roll = roll1 + roll2;
 		System.out.printf("You rolled %d\n", roll);
 	}
 
